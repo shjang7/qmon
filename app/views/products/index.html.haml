@@ -1,0 +1,17 @@
+.main-page
+  .header-bar
+    .brand QMON
+    .input search
+    =link_to 'My qmon', new_product_path, class: 'btn btn-orange'
+    %button.btn.btn-orange cart
+  .category
+    %ul
+      %li Best
+      %li Health
+      %li Spring
+      %li Fashion
+      %li Travel
+      %li Beauty
+  .ad-image-animation
+  .product-list
+    = render @rep_products

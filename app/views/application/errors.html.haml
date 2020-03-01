@@ -1,0 +1,8 @@
+- if object.errors.any?
+  #errors
+    %p
+      = object.errors.count
+      Prevented this product from saving
+    %ul
+      - object.errors.full_messages.each do |msg|
+        %li= msg

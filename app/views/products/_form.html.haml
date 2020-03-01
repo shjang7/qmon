@@ -1,0 +1,7 @@
+= simple_form_for @rep_product, html: { multipart: true } do |f|
+  = render 'errors', object: @rep_product
+  .panel-body
+    = f.input :title
+    = f.input :price
+
+  = f.button :submit, class: 'btn btn-primary'
