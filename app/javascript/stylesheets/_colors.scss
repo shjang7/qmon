@@ -55,6 +55,16 @@ $color-yellow-darken-3: darken($color-yellow, 15%);
 }
 
 .alert-alert {
-  background-color: lighten($color-alert, 5%);
+  background-color: lighten($color-alert, 15%);
   border-color: $color-alert;
+}
+
+#errors {
+  background-color: lighten($color-alert, 15%);
+  border-color: $color-alert;
+  padding: 1rem;
+  border-radius: 3px;
+  li {
+    list-style-type: circle;
+  }
 }
