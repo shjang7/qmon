@@ -1,8 +1,10 @@
-= simple_form_for @product, html: { multipart: true } do |f|
+= simple_form_for @product, wrapper: :horizontal_form, html: { multipart: true } do |f|
   = render 'errors', object: @product
   .panel-body
-    = f.input :title
-    = f.input :price
-    = f.input :image
+    = f.input :title, wrapper: :horizontal_collection_inline
+    = f.input :price, wrapper: :horizontal_collection_inline
+    = f.input :shipping_fee, as: :radio_buttons, collection: shipping_fee_choice, :checked => shipping_fee_choice.first, wrapper: :horizontal_collection_inline
+    = f.association :category, prompt: 'Select Category', wrapper: :horizontal_collection_inline
+    = f.input :image, wrapper: :horizontal_collection_inline
 
   = f.button :submit, class: 'btn btn-orange'

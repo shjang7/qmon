@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.category_id = product_params[:category_id]
 
     if @product.save
       redirect_to @product, notice: 'Successfully created new product'
@@ -24,6 +25,7 @@ class ProductsController < ApplicationController
   def edit; end
 
   def update
+    @product.category_id = product_params[:category_id]
     if @product.update(product_params)
       redirect_to @product
     else
@@ -39,7 +41,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :price, :image)
+    params.require(:product).permit(:title, :price, :shipping_fee, :category_id, :image)
   end
 
   def find_product
