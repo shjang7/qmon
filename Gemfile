@@ -14,8 +14,6 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'haml', '~> 5.1', '>= 5.1.2'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
-# gem 'actionpack', '~> 6.0', '>= 6.0.2.1'
-# gem 'activemodel', '~> 6.0', '>= 6.0.2.1'
 gem "aws-sdk-s3", require: false
 gem 'carrierwave', '~> 2.0', '>= 2.0.2'
 gem 'fog-aws', '~> 3.5', '>= 3.5.2'
