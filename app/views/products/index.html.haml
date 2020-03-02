@@ -4,6 +4,7 @@
     .input search
     -# if merchandiser
     = link_to 'Add product', new_product_path, class: 'btn btn-orange'
+    -# 'Login': when click buy, like, shopping cart
     = link_to 'My qmon', new_product_path, class: 'btn btn-orange'
     %button.btn.btn-orange cart
   .category
@@ -18,3 +19,4 @@
   .product-list
     = render @products
 = render 'popover'
+= render 'sample_colors'
