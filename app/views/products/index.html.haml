@@ -2,7 +2,9 @@
   .header-bar
     .brand QMON
     .input search
-    =link_to 'My qmon', new_product_path, class: 'btn btn-orange'
+    -# if merchandiser
+    = link_to 'Add product', new_product_path, class: 'btn btn-orange'
+    = link_to 'My qmon', new_product_path, class: 'btn btn-orange'
     %button.btn.btn-orange cart
   .category
     %ul
