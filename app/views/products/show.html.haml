@@ -2,6 +2,7 @@
 
 %h1= @product.title
 %div= @product.price
+%div= image_tag @product.image.url
 
 -# if merchandiser
 = link_to 'Edit', edit_product_path, class: 'btn btn-default'

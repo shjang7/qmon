@@ -29,4 +29,6 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
 /remove
+config/app_environment_variables.rb
