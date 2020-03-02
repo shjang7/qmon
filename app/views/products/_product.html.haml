@@ -1,2 +1,4 @@
-= link_to product do
-  = product.title
+.product
+  = link_to product do
+    = image_tag product.image.thumb.url
+    %h2= product.title
