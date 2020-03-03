@@ -4,7 +4,7 @@ This app is an online shopping mall app which orients a quick shipment.<br />
 It designed by E-R diagram for back-end, and UI workflow for front-end.
 
 ### E-R diagram
-![](./docs/e_r_diagram.png)
+![](./docs/e-r-diagram.png)
 
 ### [User Interface workflow design](./docs/)
 
