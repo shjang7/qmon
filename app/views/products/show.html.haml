@@ -8,6 +8,7 @@
 - @product.product_items.each do |item|
   %div= item.title
   %div= item.price
+  %div= image_tag item.image.url
 
 -# if merchandiser
 = link_to 'Edit', edit_product_path, class: 'btn btn-default'

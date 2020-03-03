@@ -3,5 +3,5 @@
   = f.input :title, wrapper: :horizontal_collection_inline
   = f.input :price, wrapper: :horizontal_collection_inline
   = f.input :total_amount, wrapper: :horizontal_collection_inline
-  -# = f.input :image, wrapper: :horizontal_collection_inline
+  = f.input :image, wrapper: :horizontal_collection_inline
   = link_to 'Remove', '#', data: { action: 'click->nested-form#remove_association' }, class: 'form-button btn btn-default float-right'

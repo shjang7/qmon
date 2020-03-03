@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:title, :price, :shipping_fee, :category_id, :image,
-      product_items_attributes: %i[id title price total_amount _destroy])
+      product_items_attributes: %i[id title price total_amount image _destroy])
   end
 
   def find_product
