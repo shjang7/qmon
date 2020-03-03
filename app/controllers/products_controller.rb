@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.product_items.new
   end
 
   def create
@@ -22,7 +23,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @product.product_items.new
+  end
 
   def update
     @product.category_id = product_params[:category_id]
@@ -41,7 +44,8 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :price, :shipping_fee, :category_id, :image)
+    params.require(:product).permit(:title, :price, :shipping_fee, :category_id, :image,
+      product_items_attributes: %i[id title price total_amount _destroy])
   end
 
   def find_product
