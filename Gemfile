@@ -18,10 +18,12 @@ gem "aws-sdk-s3", require: false
 gem 'carrierwave', '~> 2.0', '>= 2.0.2'
 gem 'fog-aws', '~> 3.5', '>= 3.5.2'
 gem 'devise', '~> 4.7', '>= 4.7.1'
-gem 'faker', '~> 2.10', '>= 2.10.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.9'
+  gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
+  gem 'faker', '~> 2.10', '>= 2.10.2'
 end
 
 group :development do
