@@ -2,10 +2,12 @@
   .header-bar
     .brand QMON
     .input search
-    -# if merchandiser
-    = link_to 'Add product', new_product_path, class: 'btn btn-orange'
-    -# 'Login': when click buy, like, shopping cart
-    = link_to 'My qmon', new_product_path, class: 'btn btn-orange'
+    - if merchandiser_signed_in?
+      = link_to 'Add product', new_product_path, class: 'btn btn-orange'
+      = link_to 'Logout', destroy_merchandiser_session_path, method: :delete, class: 'btn btn-orange'
+    - else
+      = link_to 'Registration', static_pages_signup_path, class: 'btn btn-orange'
+      = link_to 'SignIn', new_merchandiser_session_path, class: 'btn btn-orange'
     %button.btn.btn-orange cart
   .category
     %ul

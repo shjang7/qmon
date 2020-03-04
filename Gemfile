@@ -17,6 +17,8 @@ gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem "aws-sdk-s3", require: false
 gem 'carrierwave', '~> 2.0', '>= 2.0.2'
 gem 'fog-aws', '~> 3.5', '>= 3.5.2'
+gem 'devise', '~> 4.7', '>= 4.7.1'
+gem 'faker', '~> 2.10', '>= 2.10.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
