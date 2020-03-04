@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, except: %i[index new create]
+  before_action :authenticate_merchandiser!, except: %i[index show]
 
   def index
     @products = Product.all
@@ -8,12 +9,12 @@ class ProductsController < ApplicationController
   def show; end
 
   def new
-    @product = Product.new
+    @product = current_merchandiser.products.build
     @product.product_items.new
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = current_merchandiser.products.build(product_params)
     @product.category_id = product_params[:category_id]
 
     if @product.save
