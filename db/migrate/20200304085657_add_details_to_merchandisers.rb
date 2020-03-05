@@ -10,6 +10,7 @@ class AddDetailsToMerchandisers < ActiveRecord::Migration[6.0]
       t.integer :earnings,          default: 0
     end
 
-    add_index :merchandisers, %i[username business_name], unique: true
+    add_index :merchandisers, :username, unique: true
+    add_index :merchandisers, %i[business_name business_number], unique: true
   end
 end
