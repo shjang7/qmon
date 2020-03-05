@@ -57,9 +57,10 @@ ActiveRecord::Schema.define(version: 2020_03_04_111021) do
     t.string "contact_number", default: "", null: false
     t.string "company_address", default: "", null: false
     t.integer "earnings", default: 0
+    t.index ["business_name", "business_number"], name: "index_merchandisers_on_business_name_and_business_number", unique: true
     t.index ["email"], name: "index_merchandisers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_merchandisers_on_reset_password_token", unique: true
-    t.index ["username", "business_name"], name: "index_merchandisers_on_username_and_business_name", unique: true
+    t.index ["username"], name: "index_merchandisers_on_username", unique: true
   end
 
   create_table "product_items", force: :cascade do |t|
