@@ -2,6 +2,7 @@ $color-alert: #f36a5f;
 
 $color-base: #ddd;
 $color-orange: #fb9224;
+$color-orange-point: #f45905;
 $color-orange-lighten-1: lighten($color-orange, 5%);
 $color-orange-lighten-2: lighten($color-orange, 10%);
 $color-orange-lighten-3: lighten($color-orange, 15%);
@@ -41,8 +42,14 @@ $color-yellow-darken-3: darken($color-yellow, 15%);
 }
 
 .btn-orange {
-  background-color: $color-orange;
-  border-color: $color-orange-darken-1;
+  background-color: $color-orange-darken-1;
+  border-color: $color-orange-darken-3;
+  color: white;
+  &:hover {
+    background-color: $color-orange-point;
+    border-color: $color-orange-darken-1;
+    color: white;
+  }
 }
 
 .btn-default {
