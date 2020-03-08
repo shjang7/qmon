@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_merchandiser!, except: %i[index show]
 
   def index
-    @products = Product.all
+    @products = Product.filter_by_category(params[:category])
   end
 
   def show; end

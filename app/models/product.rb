@@ -8,4 +8,8 @@ class Product < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validates :title, :price, :category_id, :shipping_fee, :image, presence: true
+
+  scope :filter_by_category, -> (category_name) {
+    Category.find_by(name: category_name || 'best').products.all
+  }
 end

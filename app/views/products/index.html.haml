@@ -10,13 +10,8 @@
       = link_to 'SignIn', new_merchandiser_session_path, class: 'btn btn-orange'
     %button.btn.btn-orange cart
   .category
-    %ul
-      %li Best
-      %li Health
-      %li Spring
-      %li Fashion
-      %li Travel
-      %li Beauty
+    - category_names.each do |name|
+      = link_to name.capitalize, products_path(category: name), class: 'btn btn-secondary'
   .ad-image-animation
   .product-list
     = render @products
