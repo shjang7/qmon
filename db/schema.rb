@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_101452) do
+ActiveRecord::Schema.define(version: 2020_03_12_092428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,7 +72,8 @@ ActiveRecord::Schema.define(version: 2020_03_09_101452) do
     t.string "contact_number", default: "", null: false
     t.string "company_address", default: "", null: false
     t.integer "earnings", default: 0
-    t.index ["business_name", "business_number"], name: "index_merchandisers_on_business_name_and_business_number", unique: true
+    t.index ["business_name"], name: "index_merchandisers_on_business_name", unique: true
+    t.index ["business_number"], name: "index_merchandisers_on_business_number", unique: true
     t.index ["email"], name: "index_merchandisers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_merchandisers_on_reset_password_token", unique: true
     t.index ["username"], name: "index_merchandisers_on_username", unique: true
@@ -102,7 +103,19 @@ ActiveRecord::Schema.define(version: 2020_03_09_101452) do
     t.index ["merchandiser_id"], name: "index_products_on_merchandiser_id"
   end
 
+  create_table "recent_views", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id", "product_id"], name: "index_recent_views_on_customer_id_and_product_id", unique: true
+    t.index ["customer_id"], name: "index_recent_views_on_customer_id"
+    t.index ["product_id"], name: "index_recent_views_on_product_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "product_items", "products"
   add_foreign_key "products", "merchandisers"
+  add_foreign_key "recent_views", "customers"
+  add_foreign_key "recent_views", "products"
 end
