@@ -35,6 +35,18 @@ categories.each do |c|
   p.save(validate: false)
 end
 
+Product.all.each do |p|
+  0.upto(3) do |i|
+    temp_price = i.zero? ? p.price : p.price + Faker::Number.number(digits: 1)
+    item = p.product_items.build(
+      title: p.title + Faker::Company.bs,
+      price: temp_price,
+      total_amount: Faker::Number.number(digits: 2),
+    )
+    item.save(validate: false)
+  end
+end
+
 Customer.create(
   username: customer_username,
   name: Faker::Name.name,
