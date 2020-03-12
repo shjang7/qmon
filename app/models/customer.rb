@@ -3,10 +3,13 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :recent_views, inverse_of: :product, dependent: :destroy
+
   validates :username, uniqueness: true
   validates :username, :contact_number, :address, presence: true
   validates :username, length: { minimum: 4, maximum: 50 }
-  
+
   def email_required?
     false
   end
