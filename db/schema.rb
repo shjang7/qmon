@@ -80,9 +80,9 @@ ActiveRecord::Schema.define(version: 2020_03_09_101452) do
 
   create_table "product_items", force: :cascade do |t|
     t.string "title"
-    t.integer "total_amount"
-    t.integer "buy_amount"
     t.integer "price"
+    t.integer "total_amount"
+    t.integer "buy_amount", default: 0
     t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
