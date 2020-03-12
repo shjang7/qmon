@@ -77,6 +77,18 @@ RSpec.describe Merchandiser, type: :model do
       expect(jen).to_not be_valid
     end
 
+    it 'cannot be valid with duplicate business_name' do
+      mos = create(:merchandiser)
+      jen = build(:merchandiser, business_name: mos.business_name)
+      expect(jen).to_not be_valid
+    end
+
+    it 'cannot be valid with duplicate business_number' do
+      mos = create(:merchandiser)
+      jen = build(:merchandiser, business_number: mos.business_number)
+      expect(jen).to_not be_valid
+    end
+
     it 'cannot be valid with a short username under 4 characters' do
       jen = build(:merchandiser, username: Faker::Alphanumeric.alphanumeric(number: 3))
       expect(jen).to_not be_valid
