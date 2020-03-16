@@ -4,7 +4,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :recent_views, inverse_of: :product, dependent: :destroy
+  has_many :recent_views, inverse_of: :customer, dependent: :destroy
 
   validates :username, uniqueness: true
   validates :username, :contact_number, :address, presence: true
