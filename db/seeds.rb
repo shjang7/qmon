@@ -36,7 +36,7 @@ categories.each do |c|
 end
 
 Product.all.each do |p|
-  0.upto(3) do |i|
+  0.upto(1) do |i|
     temp_price = i.zero? ? p.price : p.price + Faker::Number.number(digits: 1)
     item = p.product_items.build(
       title: p.title + Faker::Company.bs,

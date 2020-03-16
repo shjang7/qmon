@@ -6,7 +6,9 @@ class ProductsController < ApplicationController
     @products = Product.filter_by_category(params[:category])
   end
 
-  def show; end
+  def show
+    recent_view_update
+  end
 
   def new
     @product = current_merchandiser.products.build
@@ -51,5 +53,11 @@ class ProductsController < ApplicationController
 
   def find_product
     @product = Product.find(params[:id])
+  end
+
+  def recent_view_update
+    rv = current_customer.recent_views.find_or_create_by(product_id: @product.id)
+    rv.updated_at = DateTime.now
+    rv.save!
   end
 end
