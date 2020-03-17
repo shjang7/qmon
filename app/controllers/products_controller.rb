@@ -7,7 +7,11 @@ class ProductsController < ApplicationController
   end
 
   def show
-    recent_view_update
+    if customer_signed_in?
+      recent_view_update
+      @purchase = current_customer.purchases.build
+      @purchase.orders.new
+    end
   end
 
   def new
