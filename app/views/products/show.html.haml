@@ -10,6 +10,9 @@
   %div= item.price
   %div= image_tag item.image.url
 
+- if customer_signed_in?
+  = render partial: 'purchases/new_purchase', locals: { product_items: @product.product_items }
+
 - if merchandiser_signed_in?
   = link_to 'Edit', edit_product_path, class: 'btn btn-default'
   = link_to 'Delete', product_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default'
