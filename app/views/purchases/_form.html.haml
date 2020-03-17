@@ -1,0 +1,9 @@
+= simple_form_for @purchase, wrapper: :horizontal_form, html: { multipart: true } do |f|
+  = render 'errors', object: @purchase
+  .panel-body
+    = f.input :price, disabled: true
+    = f.input :shipping_fee, disabled: true
+    = f.input :recipient_name, wrapper: :horizontal_collection_inline
+    = f.input :recipient_contact, wrapper: :horizontal_collection_inline
+    = f.input :recipient_address, wrapper: :horizontal_collection_inline
+  = f.button :submit, 'Pay', class: 'btn btn-orange'
