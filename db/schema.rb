@@ -80,13 +80,9 @@ ActiveRecord::Schema.define(version: 2020_03_16_230934) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.date "arrive_date"
-    t.string "shipping_status", default: "", null: false
     t.string "title", default: "", null: false
     t.integer "quantity", default: 0
     t.integer "price", default: 0
-    t.integer "shipping_fee", default: 0
-    t.text "item_list", default: "", null: false
     t.integer "product_id", default: 0
     t.bigint "product_item_id", null: false
     t.bigint "purchase_id", null: false
@@ -121,12 +117,14 @@ ActiveRecord::Schema.define(version: 2020_03_16_230934) do
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.integer "purchase_number"
+    t.string "purchase_number", default: "", null: false
     t.integer "price", default: 0, null: false
     t.integer "shipping_fee", default: 0, null: false
     t.string "recipient_name", default: "", null: false
     t.string "recipient_contact", default: "", null: false
     t.string "recipient_address", default: "", null: false
+    t.integer "shipping_status", default: 0
+    t.datetime "arrive_date"
     t.boolean "confirmed", default: false
     t.bigint "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
