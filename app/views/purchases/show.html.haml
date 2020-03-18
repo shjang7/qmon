@@ -1,2 +1,31 @@
-<h1>Purchases#show</h1>
-<p>Find me in app/views/purchases/show.html.erb</p>
+%h2 Detailed information
+%small= @purchase.created_at
+%small= "Order number: #{@purchase.purchase_number}"
+%div Payment information
+%div
+  %small= "Payment amount: #{@purchase.price}"
+%div
+  %small= "The delivery charge: #{@purchase.shipping_fee}"
+%div
+  %small= "Total amount: #{@purchase.price + @purchase.shipping_fee}"
+
+%div Product information
+%div= one_or_many(@purchase.orders)
+%div= render_shipping_status(@purchase.shipping_status, @purchase.arrive_date)
+
+- @purchase.orders.each do |order|
+  = image_tag order.product_item.image.thumb.url
+  %div= "#{order.title}(Buy: #{order.quantity})"
+  %div= order.price
+  %div= order.price
+
+%div Shipping point information
+%div
+  %span.text-secondary Recipient Name
+  = @purchase.recipient_name
+%div
+  %span.text-secondary Recipient Contact
+  = @purchase.recipient_contact
+%div
+  %span.text-secondary Recipient Address
+  = @purchase.recipient_address
