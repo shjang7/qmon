@@ -14,7 +14,11 @@ import '../stylesheets/application'
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
   $('[data-toggle="popover"]').popover()
+
+  let customAlert = document.querySelector('.alert');
+  if(customAlert) setTimeout(() => { customAlert.style.display = 'none'; }, 4000);
 })
+
 
 // import { Application } from "stimulus"
 // import { definitionsFromContext } from "stimulus/webpack-helpers"

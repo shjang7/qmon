@@ -23,7 +23,7 @@ class PurchasesController < ApplicationController
     @purchase.confirmed = true
     @purchase.purchase_number = "#{Time.now.to_i}#{@purchase.id}"
     if @purchase.update(purchase_params)
-      redirect_to @purchase
+      redirect_to complete_purchase_path(id: @purchase.id)
     else
       @purchase.confirmed = false
       render 'edit'
@@ -31,6 +31,9 @@ class PurchasesController < ApplicationController
   end
 
   def show
+  end
+
+  def complete
   end
 
   private
@@ -42,7 +45,12 @@ class PurchasesController < ApplicationController
   end
 
   def find_purchase
-    @purchase = Purchase.find(params[:id])
+    unless Purchase.find_by_id(params[:id]).exists?
+      flash[:alert] = 'No info'
+      redirect_back(fallback_location: root_path)
+    else
+      @purchase = Purchase.find(params[:id])
+    end
   end
 
   def remove_unconfirmed

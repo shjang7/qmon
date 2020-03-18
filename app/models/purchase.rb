@@ -12,5 +12,9 @@ class Purchase < ApplicationRecord
     def unconfirmed_destroy(customer_id)
       where(customer_id: customer_id).where(confirmed: false).destroy_all
     end
+
+    def find_by_id(id)
+      where(id: id)
+    end
   end
 end
