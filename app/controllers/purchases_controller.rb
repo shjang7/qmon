@@ -1,17 +1,11 @@
 class PurchasesController < ApplicationController
-  before_action :find_purchase, except: %i[create]
+  before_action :find_purchase, except: :create
+  before_action :remove_unconfirmed, only: :create
   before_action :authenticate_customer!
 
   def create
     @purchase = current_customer.purchases.build(purchase_params)
-    # @purchase.purchase_number = 10000000000 - current_customer.id -
-    @purchase.shipping_fee = purchase_params[:shipping_fee]
-    orders = purchase_params[:orders_attributes].values()
-    orders.each do |order|
-      quantity, product_id, product_item_id = order.values_at(:quantity, :product_id, :product_item_id)
-      each_price = ProductItem.find(product_item_id).price
-      @purchase.price = quantity.to_i * each_price
-    end
+    @purchase.price = purchase_price(purchase_params[:orders_attributes].values())
 
     unless @purchase.orders.empty?
       @purchase.save(:validate => false)
@@ -26,10 +20,12 @@ class PurchasesController < ApplicationController
   end
 
   def update
-    @purchase.confirmed = true if @purchase.valid?
-    if @purchase.save
+    @purchase.confirmed = true
+    @purchase.purchase_number = "#{Time.now.to_i}#{@purchase.id}"
+    if @purchase.update(purchase_params)
       redirect_to @purchase
     else
+      @purchase.confirmed = false
       render 'edit'
     end
   end
@@ -40,10 +36,24 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase).permit(:shipping_fee, orders_attributes: %i[id title quantity product_id product_item_id _destroy])
+    params.require(:purchase).permit(:item_list,
+      :shipping_fee, :recipient_name, :recipient_contact, :recipient_address,
+      orders_attributes: %i[id title quantity product_id product_item_id _destroy])
   end
 
   def find_purchase
     @purchase = Purchase.find(params[:id])
+  end
+
+  def remove_unconfirmed
+    Purchase.unconfirmed_destroy(current_customer)
+  end
+
+  def purchase_price(orders)
+    orders.sum do |order|
+      quantity, product_id, product_item_id = order.values_at(:quantity, :product_id, :product_item_id)
+      each_price = ProductItem.find(product_item_id).price
+      quantity.to_i * each_price
+    end
   end
 end
