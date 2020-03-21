@@ -2,8 +2,9 @@
 %html
   %head
     = render 'layouts/head_config'
-    %title Quick shipping QMON
+    %title Quick Shipping | QMON
   %body
+    = link_to 'QMON', root_path, class: 'brand'
     .container
       - flash.each do |name, msg|
         = content_tag :div, msg, class: "alert alert-#{name}"

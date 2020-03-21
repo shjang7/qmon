@@ -8,7 +8,7 @@ module PurchasesHelper
     end
   end
 
-  def render_shipping_status(shipping_status, arrive_date)
+  def render_shipping_status(shipping_status, arrive_date = nil)
   case shipping_status
   when 0
     'Preparing product'
