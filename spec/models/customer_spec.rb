@@ -38,9 +38,7 @@ RSpec.describe Customer, type: :model do
       m = build(:customer, password: '')
       expect(m).to_not be_valid
     end
-  end
-
-  context 'cannot be valid' do
+    
     it 'with duplicated username' do
       mos = create(:customer)
       jen = build(:customer, username: mos.username)
