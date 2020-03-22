@@ -1,5 +1,13 @@
-%div= render_shipping_status(purchase.shipping_status, purchase.arrive_date)
-- purchase.orders.each do |order|
-  = image_tag order.product_item.image.thumb.url
-  %div= "#{order.title}(Buy: #{order.quantity})"
-  %div= order.price
+.purchase
+  %div= render_shipping_status(purchase.shipping_status, purchase.arrive_date)
+  - if short
+    %div= one_or_many(purchase.orders)
+    = image_tag purchase.orders.first.product_item.image.thumb.url
+    %div= purchase.price
+  - else
+    - purchase.orders.each do |order|
+      = image_tag order.product_item.image.thumb.url
+      %div= "#{order.title}(Buy: #{order.quantity})"
+      %div= order.price
+      = link_to 'Refund', root_path
+      = link_to 'Write Review', new_review_path, class: 'btn btn-orange'

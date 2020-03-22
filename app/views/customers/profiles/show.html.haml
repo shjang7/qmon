@@ -7,4 +7,5 @@
 %div Recent Purchase
 .recent-purchases
   - @purchases.each do |purchase|
-    = render 'purchases/purchase', purchase: purchase
+    = render 'purchases/purchase', purchase: purchase, short: true
+= link_to 'Total Purchase', purchases_path, class: 'btn btn-orange'

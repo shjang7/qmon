@@ -1,0 +1,7 @@
+= simple_form_for @review, wrapper: :horizontal_form, html: { multipart: true } do |f|
+  = render 'errors', object: @review
+  .panel-body
+    = f.input :body, wrapper: :horizontal_collection_inline
+    = f.input :rating, wrapper: :horizontal_collection_inline
+    = f.input :image, wrapper: :horizontal_collection_inline
+  = f.button :submit, class: 'btn btn-orange'

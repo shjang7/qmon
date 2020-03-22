@@ -10,9 +10,8 @@
   %small= "Total amount: #{@purchase.price + @purchase.shipping_fee}"
 
 %div Product information
-%div= one_or_many(@purchase.orders)
 .purchase-detail
-  = render 'purchase', purchase: @purchase
+  = render 'purchase', purchase: @purchase, short: true
 
 %div Shipping point information
 %div
