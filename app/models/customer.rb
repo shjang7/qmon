@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :recent_views, inverse_of: :customer, dependent: :destroy
   has_many :purchases,    inverse_of: :customer, dependent: :destroy
+  has_many :reviews,      inverse_of: :customer, dependent: :destroy
 
   validates :username, uniqueness: true
   validates :username, :contact_number, :address, presence: true

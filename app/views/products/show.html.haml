@@ -1,7 +1,17 @@
 = link_to '<', root_path, class: 'btn btn-default'
 
 %h1= @product.title
-%div= @product.price
+%div.clearfix
+  .float-left
+    = @product.price
+  .float-right
+    = @product.product_items.sum{ |item| item.buy_amount }
+%div= "shipping info: #{@product.shipping_fee.zero? ? 'free shipping' : 'paid delivery'}"
+
+%div Reviews
+
+
+%div Product Info
 %div= image_tag @product.image.url
 %div= @product.category.name
 
