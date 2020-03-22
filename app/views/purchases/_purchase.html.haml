@@ -10,4 +10,4 @@
       %div= "#{order.title}(Buy: #{order.quantity})"
       %div= order.price
       = link_to 'Refund', root_path
-      = link_to 'Write Review', new_review_path, class: 'btn btn-orange'
+      = link_to 'Write Review', new_review_path(product_id: order.product_id), class: 'btn btn-orange'

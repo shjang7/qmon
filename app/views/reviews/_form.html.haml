@@ -1,6 +1,7 @@
 = simple_form_for @review, wrapper: :horizontal_form, html: { multipart: true } do |f|
   = render 'errors', object: @review
   .panel-body
+    = f.hidden_field :product_id, :value => @product_id
     = f.input :body, wrapper: :horizontal_collection_inline
     = f.input :rating, wrapper: :horizontal_collection_inline
     = f.input :image, wrapper: :horizontal_collection_inline

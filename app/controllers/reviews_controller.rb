@@ -4,9 +4,17 @@ class ReviewsController < ApplicationController
 
   def new
     @review = current_customer.reviews.build
+    @product_id = params[:product_id]
   end
 
   def create
+    @review = current_customer.reviews.build(review_params)
+
+    if @review.save
+      redirect_to @review, notice: 'Successfully wrote new review'
+    else
+      render :new
+    end
   end
 
   def edit
@@ -23,6 +31,10 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+  def review_params
+    params.require(:review).permit(:body, :rating, :image, :product_id)
+  end
 
   def find_review
     @review = Review.find(params[:id])
