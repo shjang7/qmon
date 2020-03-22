@@ -1,6 +1,9 @@
 $color-alert: #f36a5f;
 
 $color-base: #ddd;
+$color-white: lighten($color-base, 100%);
+$color-black: darken($color-base, 100%);
+
 $color-orange: #fb9224;
 $color-orange-point: #f45905;
 $color-orange-lighten-1: lighten($color-orange, 5%);
@@ -20,6 +23,10 @@ $color-yellow-darken-3: darken($color-yellow, 15%);
 
 .bg-color-orange {
   background-color: $color-orange;
+  .btn-transparent {
+    border: 1px solid $color-white;
+    color: $color-white;
+  }
 }
 
 .bg-color-yellow {

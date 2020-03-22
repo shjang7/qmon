@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :customers do
+    get 'profiles/show'
+  end
   devise_for :customers
   devise_for :merchandisers
   resources :products
