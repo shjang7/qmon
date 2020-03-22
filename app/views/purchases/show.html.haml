@@ -11,13 +11,8 @@
 
 %div Product information
 %div= one_or_many(@purchase.orders)
-%div= render_shipping_status(@purchase.shipping_status, @purchase.arrive_date)
-
-- @purchase.orders.each do |order|
-  = image_tag order.product_item.image.thumb.url
-  %div= "#{order.title}(Buy: #{order.quantity})"
-  %div= order.price
-  %div= order.price
+.purchase-detail
+  = render 'purchase', purchase: @purchase
 
 %div Shipping point information
 %div

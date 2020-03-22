@@ -1,0 +1,5 @@
+%div= render_shipping_status(purchase.shipping_status, purchase.arrive_date)
+- purchase.orders.each do |order|
+  = image_tag order.product_item.image.thumb.url
+  %div= "#{order.title}(Buy: #{order.quantity})"
+  %div= order.price

@@ -5,6 +5,7 @@ class Customers::ProfilesController < ApplicationController
   before_action :find_customer, only: :show
 
   def show
+    @purchases = current_customer.purchases
   end
 
   private
