@@ -47,11 +47,17 @@ Product.all.each do |p|
   end
 end
 
-Customer.create(
+c1 = Customer.create(
   username: customer_username,
   name: Faker::Name.name,
   contact_number: Faker::PhoneNumber.cell_phone,
   address: Faker::Address.full_address,
   password: 'foobar',
   password_confirmation: 'foobar'
+)
+
+c1.reviews.create(
+  body: Faker::Company.bs,
+  rating: 5,
+  product_id: Product.first.id
 )
