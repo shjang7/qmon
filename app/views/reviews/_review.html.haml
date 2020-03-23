@@ -1,0 +1,7 @@
+.review
+  .text-secondary= review.product.title
+  %h4= review.body
+  %div= review.rating
+  %div= review.customer.name
+  - if review.image
+    -# = image_tag review.image.url

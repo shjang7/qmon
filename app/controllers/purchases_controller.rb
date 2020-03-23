@@ -1,7 +1,11 @@
 class PurchasesController < ApplicationController
-  before_action :find_purchase, except: :create
+  before_action :find_purchase, except: %i[index create]
   before_action :remove_unconfirmed, only: :create
   before_action :authenticate_customer!
+
+  def index
+    @purchases = current_customer.purchases
+  end
 
   def create
     @purchase = current_customer.purchases.build(purchase_params)

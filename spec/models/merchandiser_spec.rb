@@ -63,9 +63,7 @@ RSpec.describe Merchandiser, type: :model do
       m = build(:merchandiser, password: '')
       expect(m).to_not be_valid
     end
-  end
-
-  context 'cannot be valid' do
+    
     it 'with duplicated username' do
       mos = create(:merchandiser)
       jen = build(:merchandiser, username: mos.username)

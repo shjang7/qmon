@@ -1,0 +1,6 @@
+= @review.body
+= @review.rating
+= @review.product.title
+= @review.customer.name
+- if @review.image
+  = image_tag @review.image.thumb.url

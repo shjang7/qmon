@@ -25,3 +25,11 @@
 	display: inline-block;
 	margin: 0.3rem 0;
 }
+
+.recent-purchases {
+  img {
+    width: 100px;
+    height: 100px;
+  }
+  display: flex;
+}
