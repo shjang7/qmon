@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   resources :products
   resources :purchases
   resources :orders
-  resources :reviews
+  resources :reviews, only: %i[show index edit create update]
+  scope '/product_items/:product_item_id', :as => 'product_item' do
+    resources :reviews, only: %i[new delete]
+  end
   get '/static_pages/signup'
   get '/purchases/:id/complete', to: 'purchases#complete', as: 'complete_purchase'
 

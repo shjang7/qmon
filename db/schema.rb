@@ -145,13 +145,16 @@ ActiveRecord::Schema.define(version: 2020_03_22_055759) do
   create_table "reviews", force: :cascade do |t|
     t.text "body", default: "", null: false
     t.integer "rating", default: 0
-    t.string "image", default: "", null: false
-    t.bigint "product_id", null: false
+    t.string "image"
+    t.bigint "product_item_id", null: false
     t.bigint "customer_id", null: false
+    t.integer "order_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_reviews_on_customer_id"
-    t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.index ["order_id"], name: "index_reviews_on_order_id", unique: true
+    t.index ["product_item_id", "customer_id"], name: "index_reviews_on_product_item_id_and_customer_id"
+    t.index ["product_item_id"], name: "index_reviews_on_product_item_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -163,5 +166,5 @@ ActiveRecord::Schema.define(version: 2020_03_22_055759) do
   add_foreign_key "recent_views", "customers"
   add_foreign_key "recent_views", "products"
   add_foreign_key "reviews", "customers"
-  add_foreign_key "reviews", "products"
+  add_foreign_key "reviews", "product_items"
 end
