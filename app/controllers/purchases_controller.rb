@@ -56,7 +56,7 @@ class PurchasesController < ApplicationController
   def purchase_params
     params.require(:purchase).permit(:item_list,
       :shipping_fee, :recipient_name, :recipient_contact, :recipient_address,
-      orders_attributes: %i[id title quantity price product_id product_item_id _destroy])
+      orders_attributes: %i[id quantity product_item_id _destroy])
   end
 
   def find_purchase

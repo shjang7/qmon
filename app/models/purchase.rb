@@ -3,7 +3,7 @@ class Purchase < ApplicationRecord
   has_many    :orders,    inverse_of: :purchase, dependent: :destroy
   accepts_nested_attributes_for :orders, reject_if: :all_blank, allow_destroy: true
 
-  validates :purchase_number, :price, :shipping_fee, presence: true
+  validates :purchase_number, :shipping_fee, presence: true
   validates :recipient_name, :recipient_contact, :recipient_address, presence: true
   validates :confirm_status, :customer_id, :shipping_status, presence: true
   validates :confirm_status, inclusion: { in: [0, 1, 2] }
