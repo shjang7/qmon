@@ -1,7 +1,6 @@
 class CreateOrders < ActiveRecord::Migration[6.0]
   def change
     create_table :orders do |t|
-      t.string  :title,           null: false, default: ""
       t.integer :quantity,        default: 0
       t.integer :price,           default: 0
       t.integer :product_id,      default: 0

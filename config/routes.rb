@@ -12,7 +12,10 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[new delete]
   end
   get '/static_pages/signup'
-  get '/purchases/:id/complete', to: 'purchases#complete', as: 'complete_purchase'
+  get '/shopping_carts', to: 'purchases#index_cart'
+  scope '/purchases/:id', :as => 'purchase' do
+    get '/complete', to: 'purchases#complete', as: 'complete'
+  end
 
   root 'products#index'
 end

@@ -59,5 +59,5 @@ c1 = Customer.create(
 c1.reviews.create(
   body: Faker::Company.bs,
   rating: 5,
-  product_id: Product.first.id
+  product_item_id: ProductItem.first.id
 )

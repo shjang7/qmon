@@ -6,11 +6,11 @@
       = link_to 'Logout', destroy_merchandiser_session_path, method: :delete, class: 'btn btn-orange'
     - if customer_signed_in?
       = link_to 'My QMON', customers_profiles_show_path, class: 'btn btn-orange'
+      = link_to 'Cart', shopping_carts_path, class: 'btn btn-orange'
       = link_to 'Logout', destroy_customer_session_path, method: :delete, class: 'btn btn-orange'
     - else
       = link_to 'Registration', static_pages_signup_path, class: 'btn btn-orange'
       = link_to 'SignIn', new_customer_session_path, class: 'btn btn-orange'
-    %button.btn.btn-orange cart
   .category
     - category_names.each do |name|
       = link_to name.capitalize, products_path(category: name), class: 'btn btn-secondary'
