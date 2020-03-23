@@ -4,9 +4,9 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :recent_views, inverse_of: :customer, dependent: :destroy
-  has_many :purchases,    inverse_of: :customer, dependent: :destroy
-  has_many :reviews,      inverse_of: :customer, dependent: :destroy
+  has_many :recent_views,   inverse_of: :customer, dependent: :destroy
+  has_many :purchases,      inverse_of: :customer, dependent: :destroy
+  has_many :reviews,        inverse_of: :customer, dependent: :destroy
 
   validates :username, uniqueness: true
   validates :username, :contact_number, :address, presence: true
@@ -18,6 +18,14 @@ class Customer < ApplicationRecord
 
   def will_save_change_to_email?
     false
+  end
+
+  def bought_items
+    purchases.where(confirm_status: 2)
+  end
+
+  def shopping_cart_items
+    purchases.where(confirm_status: 1)
   end
 end
 

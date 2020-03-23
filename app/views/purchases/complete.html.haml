@@ -2,7 +2,7 @@
 %small= "Order number: #{@purchase.purchase_number}"
 .text-secondary List of goods
 - @purchase.orders.each do |order|
-  %div= order.title
+  %div= order.product_item.title
 .text-secondary Payment amount
 %div= @purchase.price
 %div

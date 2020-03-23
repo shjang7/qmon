@@ -1,7 +1,5 @@
 = content_tag :div, class: 'nested-fields clearfix form-inline' do
   = f.hidden_field :_destroy
-  = f.hidden_field :product_id, :value => @product.id
-  = f.hidden_field :title, :value => @product.title
   = f.select :product_item_id, product_items.map { |p| [p.title, p.id, { id: "order_#{p.id}" }] }
   = f.input :quantity, collection: 1..10, default: 1, label: false
   = link_to 'X', '#', data: { action: 'click->nested-form#remove_association' }, class: 'form-button btn btn-default float-right'

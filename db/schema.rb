@@ -80,10 +80,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_055759) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "title", default: "", null: false
     t.integer "quantity", default: 0
-    t.integer "price", default: 0
-    t.integer "product_id", default: 0
     t.bigint "product_item_id", null: false
     t.bigint "purchase_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -118,14 +115,13 @@ ActiveRecord::Schema.define(version: 2020_03_22_055759) do
 
   create_table "purchases", force: :cascade do |t|
     t.string "purchase_number", default: "", null: false
-    t.integer "price", default: 0, null: false
     t.integer "shipping_fee", default: 0, null: false
     t.string "recipient_name", default: "", null: false
     t.string "recipient_contact", default: "", null: false
     t.string "recipient_address", default: "", null: false
     t.integer "shipping_status", default: 0
+    t.integer "confirm_status", default: 0
     t.datetime "arrive_date"
-    t.boolean "confirmed", default: false
     t.bigint "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -146,15 +142,12 @@ ActiveRecord::Schema.define(version: 2020_03_22_055759) do
     t.text "body", default: "", null: false
     t.integer "rating", default: 0
     t.string "image"
-    t.bigint "product_item_id", null: false
+    t.bigint "order_id", null: false
     t.bigint "customer_id", null: false
-    t.integer "order_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_reviews_on_customer_id"
-    t.index ["order_id"], name: "index_reviews_on_order_id", unique: true
-    t.index ["product_item_id", "customer_id"], name: "index_reviews_on_product_item_id_and_customer_id"
-    t.index ["product_item_id"], name: "index_reviews_on_product_item_id"
+    t.index ["order_id"], name: "index_reviews_on_order_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -166,5 +159,5 @@ ActiveRecord::Schema.define(version: 2020_03_22_055759) do
   add_foreign_key "recent_views", "customers"
   add_foreign_key "recent_views", "products"
   add_foreign_key "reviews", "customers"
-  add_foreign_key "reviews", "product_items"
+  add_foreign_key "reviews", "orders"
 end

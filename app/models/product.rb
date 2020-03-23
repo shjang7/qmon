@@ -13,4 +13,10 @@ class Product < ApplicationRecord
   scope :filter_by_category, -> (category_name) {
     Category.find_by(name: category_name || 'best').products.all
   }
+
+  def reviews
+    obj = []
+    product_items.each{ |item| item.orders.each{ |order| obj << order.review }}
+    obj
+  end
 end

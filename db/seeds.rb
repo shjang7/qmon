@@ -56,8 +56,24 @@ c1 = Customer.create(
   password_confirmation: 'foobar'
 )
 
+p1 = c1.purchases.create(
+  purchase_number: Faker::Number.unique,
+  shipping_fee: 0,
+  recipient_name: Faker::Name.name,
+  recipient_contact: Faker::PhoneNumber.cell_phone,
+  recipient_address: Faker::Address.full_address,
+  shipping_status: 2,
+  confirm_status: 2,
+  arrive_date: Faker::Time.between(from: DateTime.now - 2, to: DateTime.now)
+)
+
+p1.orders.create(
+  quantity: 1,
+  product_item_id: ProductItem.first.id,
+)
+
 c1.reviews.create(
   body: Faker::Company.bs,
   rating: 5,
-  product_id: Product.first.id
+  order_id: Order.first.id
 )
