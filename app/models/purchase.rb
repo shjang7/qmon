@@ -21,4 +21,16 @@ class Purchase < ApplicationRecord
   def price
     orders.sum(&:price)
   end
+
+  def title
+    orders.first.product_item.product.title
+  end
+
+  def thumb_img
+    orders.first.product_item.image.thumb.url
+  end
+
+  def quantity
+    orders.sum(&:quantity)
+  end
 end

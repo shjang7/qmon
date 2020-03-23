@@ -33,3 +33,22 @@
   }
   display: flex;
 }
+
+.shopping_cart {
+  img {
+    width: 100px;
+    height: 100px;
+  }
+  display: flex;
+  flex-direction: column;
+  .order-image {
+    float: left;
+  }
+  .title,
+  .price {
+    float: left;
+  }
+  .order-info {
+    clear: left;
+  }
+}
