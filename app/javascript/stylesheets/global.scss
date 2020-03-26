@@ -52,3 +52,15 @@
     clear: left;
   }
 }
+
+a.brand {
+  color: $color-orange;
+  font-weight: 900;
+}
+
+.product {
+  &,
+  img {
+    width: 600px;
+  }
+}

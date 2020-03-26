@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
       @purchase = current_customer.purchases.build
       @purchase.orders.new
     end
+    @reviews = @product.reviews
   end
 
   def new

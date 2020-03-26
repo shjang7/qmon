@@ -1,9 +1,11 @@
 .clearfix
-  .float-left= image_tag item.thumb_img
   .float-left
-    %h4= item.title
+    = link_to item.product do
+      = image_tag item.product.image.thumb.url
+  .float-left
+    %h4= item.product.title
     - item.orders.each do |order|
-      %small.text-secondary= "#{order.id}_#{order.title}"
+      %small.text-secondary= order.title
       %div= order.quantity
       %div= order.price
 %hr
