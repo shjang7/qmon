@@ -57,7 +57,12 @@
   }
 }
 
+.header {
+  padding: .5rem;
+}
+
 a.brand {
+  display: inline;
   color: $color-orange;
   font-weight: 900;
 }

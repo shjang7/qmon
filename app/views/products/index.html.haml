@@ -1,5 +1,5 @@
 .main-page
-  = render 'products/header'
+  - provide(:header, 'products/header')
   .ad-image-animation
   .product-list
     = render @products

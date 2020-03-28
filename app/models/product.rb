@@ -14,9 +14,12 @@ class Product < ApplicationRecord
     Category.find_by(name: category_name || 'best').products.all
   }
 
+  has_many :any_friendships, lambda { |user|
+    unscope(:where).where('user_id = :id OR friend_id = :id', id: user.id)
+  }, class_name: :Friendship, dependent: :destroy
+
   def reviews
-    obj = []
-    product_items.each{ |item| item.orders.each{ |order| obj << order.review }}
-    obj
+    Review
+      .where(order_id: Order.where(product_item_id: product_items.map(&:id)))
   end
 end
