@@ -10,20 +10,25 @@
       %div= "#{@product.product_items.sum{ |item| item.buy_amount } } Buy"
 %div= "shipping info: #{@product.shipping_fee.zero? ? 'free shipping' : 'paid delivery'}"
 
-.reviews= "Reviews #{@reviews.size}"
-= render @reviews
+#product-items-toggle.btn.btn-orange Product Items
+#reviews-toggle.btn.btn-orange Reviews
 
-%div Product Info
-%div= @product.category.name
+#reviews.reviews.d-none
+  = "Reviews #{@reviews.size}"
+  = render @reviews
 
-- @product.product_items.each do |item|
-  %div= item.title
-  %div= item.price
-  %div= image_tag item.image.url
+#product-items.product-items
+  %div Product Info
+  %div= @product.category.name
 
-- if customer_signed_in?
-  = render partial: 'purchases/new_purchase', locals: { product_items: @product.product_items }
+  - @product.product_items.each do |item|
+    %div= item.title
+    %div= item.price
+    %div= image_tag item.image.url
 
-- if merchandiser_signed_in?
-  = link_to 'Edit', edit_product_path, class: 'btn btn-default'
-  = link_to 'Delete', product_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default'
+  - if customer_signed_in?
+    = render partial: 'purchases/new_purchase', locals: { product_items: @product.product_items }
+
+  - if merchandiser_signed_in?
+    = link_to 'Edit', edit_product_path, class: 'btn btn-default'
+    = link_to 'Delete', product_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default'

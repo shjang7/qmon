@@ -15,8 +15,28 @@ document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
   $('[data-toggle="popover"]').popover()
 
-  let customAlert = document.querySelector('.alert');
-  if(customAlert) setTimeout(() => { customAlert.style.display = 'none'; }, 4000);
+  const customAlert = document.querySelector('.alert');
+  if (customAlert) setTimeout(() => { customAlert.style.display = 'none'; }, 4000);
+
+  const reviewsToggle = document.getElementById('reviews-toggle');
+  const productItemsToggle = document.getElementById('product-items-toggle');
+
+  const reviews = document.querySelector('#reviews');
+  const productItems = document.querySelector('#product-items');
+
+  if (productItemsToggle) {
+    productItemsToggle.addEventListener('click', () => {
+      productItems.classList.remove('d-none');
+      reviews.classList.add('d-none');
+    });
+  }
+
+  if (reviewsToggle) {
+    reviewsToggle.addEventListener('click', () => {
+      reviews.classList.remove('d-none');
+      productItems.classList.add('d-none');
+    });
+  }
 })
 
 
