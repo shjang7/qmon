@@ -10,8 +10,9 @@
       %div= "#{@product.product_items.sum{ |item| item.buy_amount } } Buy"
 %div= "shipping info: #{@product.shipping_fee.zero? ? 'free shipping' : 'paid delivery'}"
 
-#product-items-toggle.btn.btn-orange Product Items
-#reviews-toggle.btn.btn-orange Reviews
+.d-flex
+  #product-items-toggle.product-items-toggle.w-50.btn.btn-orange Product Items
+  #reviews-toggle.reviews-toggle.w-50.btn Reviews
 
 #reviews.reviews.d-none
   = "Reviews #{@reviews.size}"

@@ -24,17 +24,27 @@ document.addEventListener("turbolinks:load", () => {
   const reviews = document.querySelector('#reviews');
   const productItems = document.querySelector('#product-items');
 
+  const toggleTap = (first, second) => {
+    first.classList.remove('d-none');
+    second.classList.add('d-none');
+  }
+
+  const toggleColor = (first, second) => {
+    first.classList.add('btn-orange');
+    second.classList.remove('btn-orange');
+  }
+
   if (productItemsToggle) {
     productItemsToggle.addEventListener('click', () => {
-      productItems.classList.remove('d-none');
-      reviews.classList.add('d-none');
+      toggleTap(productItems, reviews);
+      toggleColor(productItemsToggle, reviewsToggle);
     });
   }
 
   if (reviewsToggle) {
     reviewsToggle.addEventListener('click', () => {
-      reviews.classList.remove('d-none');
-      productItems.classList.add('d-none');
+      toggleTap(reviews, productItems);
+      toggleColor(reviewsToggle, productItemsToggle);
     });
   }
 })

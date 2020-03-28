@@ -68,3 +68,12 @@ a.brand {
     width: 600px;
   }
 }
+
+.product-items-toggle,
+.reviews-toggle {
+  border: 1px solid $color-orange;
+  border-radius: 5px;
+  padding: 0.3rem;
+  text-align: center;
+  cursor: pointer;
+}
