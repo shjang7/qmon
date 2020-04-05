@@ -1,5 +1,9 @@
 @import 'colors';
 
+body {
+  font-size: 1.2rem;
+}
+
 .d-none {
   display: none;
 }
@@ -67,11 +71,21 @@ a.brand {
   font-weight: 900;
 }
 
-.product {
+.product-basic-info {
   &,
   img {
-    width: 600px;
+    max-width: 600px;
   }
+}
+
+.product {
+  a {
+    color: black;
+    &:hover {
+      text-decoration: dotted underline;
+    }
+  }
+  max-width: 600px;
 }
 
 .product-items-toggle,
@@ -81,4 +95,15 @@ a.brand {
   padding: 0.3rem;
   text-align: center;
   cursor: pointer;
+}
+
+.new_orders {
+  max-width: 600px;
+  .nested-fields {
+    min-width: calc(100% - 70px);
+    justify-content: space-between;
+  }
+  select {
+    min-width: calc(100% - 150px);
+  }
 }

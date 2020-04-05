@@ -1,14 +1,14 @@
 = simple_form_for @purchase, wrapper: :horizontal_form, html: { multipart: true } do |f|
   = render 'errors', object: @purchase
   = f.hidden_field :shipping_fee, :value => @product.shipping_fee
-  #new_orders{ 'data-controller': 'nested-form' }
+  #new_orders.new_orders.clearfix.my-3{ 'data-controller': 'nested-form' }
     %template{ 'data-target': 'nested-form.template' }
       = f.simple_fields_for :orders, Order.new, child_index: 'NEW_RECORD' do |order|
         = render partial: 'purchases/order_fields', locals: { f: order, product_items: product_items }
     = f.simple_fields_for :orders do |order|
       = render partial: 'purchases/order_fields', locals: { f: order, product_items: product_items }
-    .link
-      %div.clearfix{ 'data-target': 'nested-form.add_item' }
+    .link.float-right
+      %div{ 'data-target': 'nested-form.add_item' }
         = link_to 'more', '#', data: { action: 'nested-form#add_association' }, class: 'btn btn-default add-button float-right'
   = f.button :submit, 'Proceed payment', class: 'btn btn-orange'
   = f.button :submit, 'Save in Shopping Cart', class: 'btn btn-orange'

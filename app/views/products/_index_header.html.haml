@@ -1,5 +1,6 @@
-.products-header.d-flex.justify-content-between
-  .input.mx-auto= render 'search_input'
+.products-header.d-flex.justify-content-between.clearfix
+  %h3.float-left.mx-1= link_to 'QMON', root_path, class: 'brand'
+  .input.mx-auto.mt-1= render 'search_input'
   .buttons
     - if merchandiser_signed_in?
       = link_to 'Add product', new_product_path, class: 'btn btn-orange'
@@ -11,6 +12,7 @@
     - else
       = link_to 'Registration', static_pages_signup_path, class: 'btn btn-orange'
       = link_to 'SignIn', new_customer_session_path, class: 'btn btn-orange'
+.bg-color-orange-lighten-3.py-2.my-3
 .category
   - category_names.each do |name|
     = link_to name.capitalize, products_path(category: name), class: 'btn btn-secondary'
