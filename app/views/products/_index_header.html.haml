@@ -1,5 +1,5 @@
 .products-header.d-flex.justify-content-between
-  .input.mx-auto search
+  .input.mx-auto= render 'search_input'
   .buttons
     - if merchandiser_signed_in?
       = link_to 'Add product', new_product_path, class: 'btn btn-orange'

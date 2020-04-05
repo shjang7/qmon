@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   end
   devise_for :customers
   devise_for :merchandisers
-  resources :products
+  resources :products do
+    collection do
+      get 'search'
+    end
+  end
   resources :purchases
   resources :orders
   resources :reviews, only: %i[show index edit create update]

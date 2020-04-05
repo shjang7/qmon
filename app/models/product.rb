@@ -10,6 +10,7 @@ class Product < ApplicationRecord
 
   validates :title, :price, :category_id, :shipping_fee, :image, presence: true
 
+  scope :updated_order, -> { order(updated_at: :desc) }
   scope :filter_by_category, -> (category_name) {
     Category.find_by(name: category_name || 'best').products.all
   }
@@ -17,6 +18,12 @@ class Product < ApplicationRecord
   has_many :any_friendships, lambda { |user|
     unscope(:where).where('user_id = :id OR friend_id = :id', id: user.id)
   }, class_name: :Friendship, dependent: :destroy
+
+  class << self
+    def search(query)
+      where('LOWER(title) LIKE ?', "%#{query.downcase}%").updated_order
+    end
+  end
 
   def reviews
     Review
