@@ -6,4 +6,12 @@ class Review < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validates :body, :rating, :customer_id, :order_id, presence: true
+
+  def product_title
+    self.order.product_item.product.title
+  end
+
+  def author
+    customer.name
+  end
 end

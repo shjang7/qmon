@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :find_product, except: %i[index new create]
-  before_action :authenticate_merchandiser!, except: %i[index show]
+  before_action :find_product, except: %i[index new create search]
+  before_action :authenticate_merchandiser!, except: %i[index show search]
 
   def index
     @products = Product.filter_by_category(params[:category])
@@ -12,6 +12,13 @@ class ProductsController < ApplicationController
       @purchase = current_customer.purchases.build
       @purchase.orders.new
     end
+    @reviews = @product.reviews
+  end
+
+  def search
+    @products = Product.search(params[:search])
+    @key_word = params[:search]
+    params[:search] = ''
   end
 
   def new

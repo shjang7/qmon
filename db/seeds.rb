@@ -3,9 +3,10 @@ require 'faker'
 Merchandiser.destroy_all
 Customer.destroy_all
 Category.destroy_all
+Order.destroy_all
 
 categories = []
-['best', 'health', 'spring', 'fashion', 'travel', 'beauty', 'food'].each do |c|
+['best', 'health', 'fashion', 'travel', 'beauty', 'food'].each do |c|
   categories.push Category.create!(name: c)
 end
 
@@ -27,23 +28,25 @@ m1 = Merchandiser.create(
 
 categories.each do |c|
   p = m1.products.build(
-    title: Faker::Company.bs,
+    title: Faker::Alphanumeric.alpha(number: 10),
     price: Faker::Number.number(digits: 5),
     shipping_fee: 0,
-    category_id: c.id
+    category_id: c.id,
+    image: Rack::Test::UploadedFile.new(Rails.root.join("public/images/#{c.name}-1.jpg"), 'image/jpeg')
   )
-  p.save(validate: false)
+  p.save
 end
 
 Product.all.each do |p|
-  0.upto(1) do |i|
+  0.upto(2) do |i|
     temp_price = i.zero? ? p.price : p.price + Faker::Number.number(digits: 1)
     item = p.product_items.build(
-      title: "#{p.title} #{Faker::Company.bs}",
+      title: "#{i+1}_#{p.title} #{Faker::Alphanumeric.alpha(number: 5)}",
       price: temp_price,
       total_amount: Faker::Number.number(digits: 2),
+      image: Rack::Test::UploadedFile.new(Rails.root.join("public/images/#{p.category.name}-1-#{i+1}.jpg"), 'image/jpeg')
     )
-    item.save(validate: false)
+    item.save
   end
 end
 

@@ -1,10 +1,10 @@
 <h1 align="center">Welcome to Qmon 👋</h1>
 
 This app is an online shopping mall app which orients a quick shipment.<br />
-It designed by E-R diagram for back-end, and UI workflow for front-end.
+It designed by E-R diagram for back-end, and only check it's working on front-end, no design.
 
 ### E-R diagram
-![](./docs/e_r_diagram.png)
+![](./docs/e-r-diagram.png)
 
 ### [User Interface workflow design](./docs/)
 
@@ -23,6 +23,7 @@ It designed by E-R diagram for back-end, and UI workflow for front-end.
 - [Faker](https://github.com/faker-ruby/faker)
 
 ## Demo
+- not available
 
 #### default account:
  - id: example-0@example.com

@@ -7,6 +7,7 @@ class Purchase < ApplicationRecord
   validates :recipient_name, :recipient_contact, :recipient_address, presence: true
   validates :confirm_status, :customer_id, :shipping_status, presence: true
   validates :confirm_status, inclusion: { in: [0, 1, 2] }
+  # 0: temp, 1: shopping cart, 2: complete payment
 
   class << self
     def unconfirmed_destroy(customer_id)
@@ -20,5 +21,13 @@ class Purchase < ApplicationRecord
 
   def price
     orders.sum(&:price)
+  end
+
+  def product
+    orders.first.product_item.product
+  end
+
+  def quantity
+    orders.sum(&:quantity)
   end
 end

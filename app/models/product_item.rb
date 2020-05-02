@@ -6,4 +6,5 @@ class ProductItem < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validates :title, :price, :total_amount, :image, presence: true
+  default_scope -> { order(updated_at: :asc) }
 end
