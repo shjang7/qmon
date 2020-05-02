@@ -1,0 +1,84 @@
+$color-alert: #f36a5f;
+
+$color-base: #ddd;
+$color-white: lighten($color-base, 100%);
+$color-black: darken($color-base, 100%);
+
+$color-orange: #fb9224;
+$color-orange-point: #f45905;
+$color-orange-lighten-1: lighten($color-orange, 5%);
+$color-orange-lighten-2: lighten($color-orange, 10%);
+$color-orange-lighten-3: lighten($color-orange, 15%);
+$color-orange-darken-1: darken($color-orange, 5%);
+$color-orange-darken-2: darken($color-orange, 10%);
+$color-orange-darken-3: darken($color-orange, 15%);
+
+$color-yellow: #fbe555;
+$color-yellow-lighten-1: lighten($color-yellow, 5%);
+$color-yellow-lighten-2: lighten($color-yellow, 10%);
+$color-yellow-lighten-3: lighten($color-yellow, 15%);
+$color-yellow-darken-1: darken($color-yellow, 5%);
+$color-yellow-darken-2: darken($color-yellow, 10%);
+$color-yellow-darken-3: darken($color-yellow, 15%);
+
+.bg-color-orange {
+  background-color: $color-orange;
+  .btn-transparent {
+    border: 1px solid $color-white;
+    color: $color-white;
+  }
+}
+
+.bg-color-yellow {
+  background-color: $color-yellow;
+}
+
+@for $i from 1 through 3 {
+  .bg-color-orange-lighten-#{$i} {
+    background-color: lighten($color-orange, $i * 5%);
+  }
+  .bg-color-orange-darken-#{$i} {
+    background-color: darken($color-orange, $i * 5%);
+  }
+  .bg-color-yellow-lighten-#{$i} {
+    background-color: lighten($color-yellow, $i * 5%);
+  }
+  .bg-color-yellow-darken-#{$i} {
+    background-color: darken($color-yellow, $i * 5%);
+  }
+}
+
+.btn-orange {
+  background-color: $color-orange-darken-1;
+  border-color: $color-orange-darken-3;
+  color: white;
+  &:hover {
+    background-color: $color-orange-point;
+    border-color: $color-orange-darken-1;
+    color: white;
+  }
+}
+
+.btn-default {
+  border-color: $color-base;
+}
+
+.alert-notice {
+  background-color: $color-yellow-lighten-2;
+  border-color: $color-yellow-lighten-1;
+}
+
+.alert-alert {
+  background-color: lighten($color-alert, 15%);
+  border-color: $color-alert;
+}
+
+#errors {
+  background-color: lighten($color-alert, 15%);
+  border-color: $color-alert;
+  padding: 1rem;
+  border-radius: 3px;
+  li {
+    list-style-type: circle;
+  }
+}

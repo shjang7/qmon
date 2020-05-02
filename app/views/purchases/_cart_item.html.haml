@@ -1,0 +1,20 @@
+.clearfix
+  .float-left
+    = link_to item.product do
+      = image_tag item.product.image.thumb.url
+  .float-left
+    %h4= item.product.title
+    - item.orders.each do |order|
+      %small.text-secondary= order.title
+      %div= order.quantity
+      %div= order.price
+%hr
+.clearfix
+  .float-left Product Price
+  .float-right= item.price
+.clearfix
+  .float-left Shipping fee
+  .float-right= item.shipping_fee
+%h4.clearfix.text-orange
+  .float-left Total Price
+  .float-right= item.price

@@ -1,0 +1,4 @@
+.header.container
+  = render yield(:header) unless yield(:header).empty?
+- if customer_signed_in? && yield(:shopping_cart) == true
+  = link_to 'Shopping Cart', shopping_carts_path, class: 'btn btn-orange'

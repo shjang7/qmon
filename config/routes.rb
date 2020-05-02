@@ -1,3 +1,25 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :customers do
+    get 'profiles/show'
+  end
+  devise_for :customers
+  devise_for :merchandisers
+  resources :products do
+    collection do
+      get 'search'
+    end
+  end
+  resources :purchases
+  resources :orders
+  resources :reviews, only: %i[show index edit create update]
+  scope '/product_items/:product_item_id', :as => 'product_item' do
+    resources :reviews, only: %i[new delete]
+  end
+  get '/static_pages/signup'
+  get '/shopping_carts', to: 'purchases#index_cart'
+  scope '/purchases/:id', :as => 'purchase' do
+    get '/complete', to: 'purchases#complete', as: 'complete'
+  end
+
+  root 'products#index'
 end

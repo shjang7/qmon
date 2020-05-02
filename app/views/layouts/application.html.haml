@@ -1,0 +1,11 @@
+!!!
+%html
+  %head
+    = render 'layouts/head_config'
+    %title Quick Shipping | QMON
+  %body
+    = render 'layouts/header'
+    .container
+      - flash.each do |name, msg|
+        = content_tag :div, msg, class: "alert alert-#{name}"
+      = yield

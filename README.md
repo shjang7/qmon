@@ -1,13 +1,12 @@
 <h1 align="center">Welcome to Qmon 👋</h1>
 
 This app is an online shopping mall app which orients a quick shipment.<br />
-It designed by E-R diagram for back-end, and UI workflow for front-end.
+It designed by E-R diagram for back-end, and only check it's working on front-end, no design.
 
 ### E-R diagram
 ![](./docs/e-r-diagram.png)
 
-### User Interface workflow design
-- (reserved)
+### [User Interface workflow design](./docs/)
 
 ## Function description
 
@@ -19,10 +18,12 @@ It designed by E-R diagram for back-end, and UI workflow for front-end.
 - Bootstrap 4.0
 - Sass 3.7
 - Rspec 3.9
+- Amazon Web Service S3
 - [Acts as votable](https://github.com/ryanto/acts_as_votable/)
 - [Faker](https://github.com/faker-ruby/faker)
 
 ## Demo
+- not available
 
 #### default account:
  - id: example-0@example.com
@@ -70,6 +71,17 @@ $ rspec --format documentation
 
 ```
 $ rails db:seed
+```
+
+> Set Amazon S3 credentials from your account
+
+```
+$ touch config/app_environment_variables.rb
+
+ENV['S3_ACCESS_KEY']='xxx'
+ENV['S3_SECRET_KEY']='xxx'
+ENV['S3_REGION']='xxx'
+ENV['S3_BUCKET']='xxx'
 ```
 
 > Open server

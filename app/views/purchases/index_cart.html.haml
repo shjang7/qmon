@@ -1,0 +1,14 @@
+.shopping_cart
+  - @purchases.each do |item|
+    = render 'cart_item', item: item
+  %h4
+    .clearfix
+      .float-left Product Price
+      .float-right= @purchases.sum(&:price)
+    .clearfix
+      .float-left Shipping fee
+      .float-right= @purchases.sum(&:shipping_fee)
+    %hr
+    .clearfix.text-orange
+      .float-left Estimated Total Price
+      .float-right= @purchases.sum{ |purchase| purchase.price + purchase.shipping_fee }

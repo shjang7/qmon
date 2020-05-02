@@ -1,0 +1,7 @@
+= content_tag :div, class: 'nested-fields clearfix', data: { new_record: f.object.new_record? } do
+  = f.hidden_field :_destroy
+  = f.input :title, wrapper: :horizontal_collection_inline
+  = f.input :price, wrapper: :horizontal_collection_inline
+  = f.input :total_amount, wrapper: :horizontal_collection_inline
+  = f.input :image, wrapper: :horizontal_collection_inline
+  = link_to 'Remove', '#', data: { action: 'click->nested-form#remove_association' }, class: 'form-button btn btn-default float-right'

@@ -1,0 +1,21 @@
+= simple_form_for @product, wrapper: :horizontal_form, html: { multipart: true } do |f|
+  = render 'errors', object: @product
+  .panel-body
+    = f.input :title, wrapper: :horizontal_collection_inline
+    = f.input :price, wrapper: :horizontal_collection_inline
+    = f.input :shipping_fee, as: :radio_buttons, collection: shipping_fee_choice, :checked => shipping_fee_choice.first, wrapper: :horizontal_collection_inline
+    = f.association :category, prompt: 'Select Category', wrapper: :horizontal_collection_inline
+    = f.input :image, wrapper: :horizontal_collection_inline
+
+    %h3 product items
+    #product_items{ 'data-controller': 'nested-form' }
+      %template{ 'data-target': 'nested-form.template' }
+        = f.simple_fields_for :product_items, ProductItem.new, child_index: 'NEW_RECORD' do |item|
+          = render 'product_item_fields', f: item
+      = f.simple_fields_for :product_items do |item|
+        = render 'product_item_fields', f: item
+      .link
+        %div.clearfix{ 'data-target': 'nested-form.add_item' }
+          = link_to 'Add more items', '#', data: { action: 'nested-form#add_association' }, class: 'btn btn-default add-button float-right'
+
+  = f.button :submit, class: 'btn btn-orange'

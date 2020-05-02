@@ -1,0 +1,34 @@
+<h2>Merchandiser sign up</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: true,
+                autofocus: true %>
+    <%= f.input :username,
+                required: true %>
+    <%= f.input :password,
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+    <%= f.input :password_confirmation,
+                required: true %>
+    <%= f.input :business_name,
+                required: true %>
+    <%= f.input :owner_name,
+                required: true %>
+    <%= f.input :contact_number,
+                required: true %>
+    <%= f.input :business_number,
+                required: true %>
+    <%= f.input :company_address,
+                required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up", class: "btn-orange" %>
+  </div>
+<% end %>
+
+<%= render "merchandisers/shared/links" %>

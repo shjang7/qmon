@@ -1,0 +1,10 @@
+%h2 Purchase completed
+%small= "Order number: #{@purchase.purchase_number}"
+.text-secondary List of goods
+- @purchase.orders.each do |order|
+  %div= order.product_item.title
+.text-secondary Payment amount
+%div= @purchase.price
+%div
+  = link_to 'Continuing shopping', root_path, class: 'btn btn-default'
+  = link_to 'Purchase details check', @purchase, class: 'btn btn-orange'

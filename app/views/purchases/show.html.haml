@@ -1,0 +1,25 @@
+%h2 Detailed information
+%small= @purchase.created_at
+%small= "Order number: #{@purchase.purchase_number}"
+%div Payment information
+%div
+  %small= "Payment amount: #{@purchase.price}"
+%div
+  %small= "The delivery charge: #{@purchase.shipping_fee}"
+%div
+  %small= "Total amount: #{@purchase.price + @purchase.shipping_fee}"
+
+%div Product information
+.purchase-detail
+  = render 'purchase', purchase: @purchase, short: true
+
+%div Shipping point information
+%div
+  %span.text-secondary Recipient Name
+  = @purchase.recipient_name
+%div
+  %span.text-secondary Recipient Contact
+  = @purchase.recipient_contact
+%div
+  %span.text-secondary Recipient Address
+  = @purchase.recipient_address
